@@ -1,0 +1,7 @@
+.env
+.venv
+*.crt
+.idea
+data/
+docker-bash.sh
+__pycache__

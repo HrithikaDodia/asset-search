@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AssetSearch</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            Asset<span>Search</span>
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <h1>Search markets the way you think</h1>
+
+            <p>
+                Discover relevant securities across industries, exchanges and market focus
+            </p>
+
+
+            <form method="POST" class="search-form">
+
+                <input
+                    type="text"
+                    name="query"
+                    value="{{ query }}"
+                    placeholder="Search securities..."
+                    required
+                >
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+        </section>
+
+
+        {% if results %}
+
+            <div class="results-header">
+                <h2>Search Results</h2>
+
+                <span>
+                    {{ results | length }} results
+                </span>
+            </div>
+
+
+            <section class="results-grid">
+
+                {% for result in results %}
+
+                    <article class="card">
+
+                        <div class="card-top">
+
+                            <div>
+                                <h3>
+                                    {{ result.name }}
+                                </h3>
+
+                                <p class="meta">
+                                    {{ result.symbol }}
+                                    ·
+                                    {{ result.country }}
+                                </p>
+                            </div>
+
+                            <span class="ticker">
+                                {{ result.symbol }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="tags">
+
+                            {% if result.sector %}
+                                <span class="tag">
+                                    {{ result.sector }}
+                                </span>
+                            {% endif %}
+
+                            {% if result.industry %}
+                                <span class="tag">
+                                    {{ result.industry }}
+                                </span>
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="card-footer">
+
+                            <span
+                                class="relevance {{ result.relevance }}"
+                            >
+                                {{ result.relevance | capitalize }}
+                                Relevance
+                            </span>
+
+                            <span
+                                class="score {{ result.relevance }}"
+                            >
+                                {{ "%.3f"|format(result.score) }}
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </section>
+
+        {% endif %}
+
+    </main>
+
+</body>
+</html>

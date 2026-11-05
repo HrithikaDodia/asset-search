@@ -1,0 +1,351 @@
+:root {
+    --background: #07090b;
+    --card: #0d1115;
+    --border: #252c33;
+
+    --text: #f4f4f5;
+    --muted: #8b949e;
+
+    --cyan: #22d3ee;
+    --yellow: #facc15;
+    --orange: #fb923c;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    background: var(--background);
+    color: var(--text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+header {
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 6%;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.logo {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+
+.logo span {
+    color: var(--cyan);
+}
+
+
+main {
+    width: min(1200px, 90%);
+    margin: auto;
+
+    padding-bottom: 80px;
+}
+
+
+.hero {
+    max-width: 900px;
+
+    margin: 80px auto 60px;
+
+    text-align: center;
+}
+
+
+.hero h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+
+.hero p {
+    color: var(--muted);
+    font-size: 17px;
+}
+
+
+.search-form {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+.search-form input {
+    flex: 1;
+
+    height: 56px;
+
+    padding: 0 18px;
+
+    background: #0b0f13;
+    color: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    font-size: 16px;
+}
+
+
+.search-form input:focus {
+    border-color: var(--cyan);
+}
+
+
+.search-form button {
+    width: 120px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: var(--yellow);
+    color: #090909;
+
+    font-weight: 700;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+.results-header span {
+    color: var(--muted);
+}
+
+
+.results-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+.card {
+    background:
+        linear-gradient(
+            145deg,
+            #10151a,
+            var(--card)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 24px;
+
+    transition: 0.2s ease;
+}
+
+
+.card:hover {
+    border-color:
+        rgba(34, 211, 238, 0.55);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.card-top {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 16px;
+}
+
+
+.card h3 {
+    margin: 0;
+
+    font-size: 20px;
+}
+
+
+.meta {
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+.ticker {
+    color: var(--yellow);
+
+    border:
+        1px solid
+        rgba(250, 204, 21, 0.3);
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    font-weight: 700;
+
+    height: fit-content;
+}
+
+
+.description {
+    color: #cdd3d8;
+
+    line-height: 1.55;
+
+    margin-top: 18px;
+
+    min-height: 65px;
+}
+
+
+.tags {
+    margin-top: 15px;
+}
+
+
+.tag {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    margin-right: 6px;
+
+    border:
+        1px solid #292f35;
+
+    border-radius: 999px;
+
+    background: #171d22;
+
+    color: #aeb7bf;
+
+    font-size: 12px;
+}
+
+
+.card-footer {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    border-top:
+        1px solid var(--border);
+
+    margin-top: 20px;
+
+    padding-top: 17px;
+}
+
+
+.relevance {
+    padding: 5px 11px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.score {
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+
+.high {
+    color: var(--cyan);
+}
+
+
+.relevance.high {
+    border:
+        1px solid var(--cyan);
+}
+
+
+.medium {
+    color: var(--yellow);
+}
+
+
+.relevance.medium {
+    border:
+        1px solid var(--yellow);
+}
+
+
+.low {
+    color: var(--orange);
+}
+
+
+.relevance.low {
+    border:
+        1px solid var(--orange);
+}
+
+
+@media (max-width: 800px) {
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .search-form button {
+        width: 100%;
+    }
+
+}
